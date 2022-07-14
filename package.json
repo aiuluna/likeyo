@@ -1,0 +1,19 @@
+{
+  "name": "likeyo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "likeyo": "./index.js"
+  },
+  "scripts": {
+    "build": "webpack --mode=production"
+  },
+  "keywords": [],
+  "author": "huzhang",
+  "license": "ISC",
+  "devDependencies": {
+    "chalk": "^5.0.1"
+  }
+}
