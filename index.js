@@ -4,9 +4,17 @@ import process from 'process'
 import { spawn } from 'child_process'
 
 import chalk from 'chalk'
+import ttys from 'ttys';
 
 import copyTpl from './utils/copyTpl.js'
 import listFilesByDir from './utils/listFilesByDir.js'
+
+const stdin = ttys.stdin;
+const stdout = ttys.stdout;
+
+// stdin.setRawMode(true)
+// stdin.resume()
+// stdin.setEncoding('utf-8') 
 
 const prompting = async () => {
 	const prompts = [
@@ -80,26 +88,27 @@ const writing = async (data) => {
 
 const installing = async () => {
 	return new Promise((resolve) => {
-		const yarnInstall = spawn('yarn')
-		yarnInstall.stdout.on('data', (data) => {
-			process.stdout.write(data)
-		})
-		yarnInstall.stderr.on('data', (err) => {
-			process.stderr.write(err)
-		})
+		const yarnInstall = spawn('yarn', [], { stdio: 'inherit' })
+		process.stdin.pipe(process.stdout)
+		// yarnInstall.stdout.on('data', (data) => {
+		// 	process.stdout.write(data)
+		// })
+		// yarnInstall.stderr.on('data', (err) => {
+		// 	process.stderr.write(err)
+		// })
 		yarnInstall.on('close', (code) => {
-      if (code) {
-        console.log(chalk.blue(`child process exited with code ${code}\r\n`))
-      }
+			if (code) {
+				console.log(chalk.blue(`child process exited with code ${code}\r\n`))
+			}
 			resolve()
 		})
 	})
 }
 
-;(async () => {
-	const answers = await prompting()
-	await writing(answers)
-	await installing()
-  console.log(chalk.green.underline.bold('\r\nproject init success!\r\n'))
-	process.exit(0)
-})()
+	; (async () => {
+		const answers = await prompting()
+		await writing(answers)
+		await installing()
+		console.log(chalk.green.underline.bold('\r\nproject init success!\r\n'))
+		process.exit(0)
+	})()

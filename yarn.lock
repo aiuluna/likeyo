@@ -4,5 +4,10 @@
 
 chalk@^5.0.1:
   version "5.0.1"
-  resolved "http://npm-reg.devops.ichoice.cc/chalk/-/chalk-5.0.1.tgz#ca57d71e82bb534a296df63bbacc4a1c22b2a4b6"
+  resolved "https://registry.npmmirror.com/chalk/-/chalk-5.0.1.tgz#ca57d71e82bb534a296df63bbacc4a1c22b2a4b6"
   integrity sha512-Fo07WOYGqMfCWHOzSXOt2CxDbC6skS/jO9ynEcmpANMoPrD+W1r1K6Vx7iNm+AQmETU1Xr2t+n8nzkV9t6xh3w==
+
+ttys@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.npmmirror.com/ttys/-/ttys-0.0.3.tgz#15bacde7831020de5f2f28f01b1732ef03651f4d"
+  integrity sha512-UCqXRZS2S7U4aVB7Salj3ChPRSsb57ogJpJ1eMCvyowxFOBGsaHKcRU8bovcDwajX1mRbv0IpUnYkoG7Ieo5Zg==
